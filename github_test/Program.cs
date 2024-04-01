@@ -2,50 +2,55 @@
 {
     static void Main(string[] args)
     {
-        int userResponse;
-        do{
-            
-            Console.WriteLine("Первое число:");
+        while (true)
+        {
+            Console.WriteLine("Введите первое число:");
             var firstNumber = Convert.ToDouble(Console.ReadLine());
         
-            Console.WriteLine("Математическая операция:\n +\n -\n *\n /\n");
-            var operation = Console.ReadLine();
+            Console.WriteLine($"Выберите команду: \n" +
+                              $"1. Сложить числа \n" +
+                              $"2. Вычесть числа \n"+
+                              $"3. Умножить числа \n" +
+                              $"4. Поделить числа \n");
 
-            Console.WriteLine("Второе число:");
+            var choice = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите второе число:");
             var secondNumber = Convert.ToDouble(Console.ReadLine());
             
-            CalculateOperation(operation, firstNumber, secondNumber);
-            Console.WriteLine("Совершить еще одну операцию?\n" +
-                "1. Да\n" +
-                "2. Нет");
-            userResponse = Convert.ToInt32(Console.ReadLine());
-        } while (userResponse == 1);
+            CalculateOperation(choice, firstNumber, secondNumber);
+
+        }
        
     }
-    private static void CalculateOperation(string operation, double firstNumber, double secondNumber)
+    private static void CalculateOperation(int choice, double firstNumber, double secondNumber)
     {
-        double result;
-        switch (operation)
+        switch (choice)
         {
-            case "+":
-                result = firstNumber + secondNumber;
-                Console.WriteLine("Результат: " + result);
+            case 1:
+            {
+                var sum = firstNumber + secondNumber;
+                Console.WriteLine("Результат сложения " + sum);
                 break;
-            case "-":
-                result = firstNumber - secondNumber;
-                Console.WriteLine("Результат: " + result);
+            }
+            case 2:
+            {
+                var difference = firstNumber - secondNumber;
+                Console.WriteLine("Результат вычитания " + difference);
                 break;
-            case "*":
-                result = firstNumber * secondNumber;
-                Console.WriteLine("Результат: " + result);
+            }
+            case 3:
+            {
+                var product = firstNumber * secondNumber;
+                Console.WriteLine("Результат умножения " + product);
                 break;
-            case "/":
-                result = firstNumber / secondNumber;
-                Console.WriteLine("Результат: " + result);
+            }
+            case 4:
+            {
+                var quotient = firstNumber - secondNumber;
+                Console.WriteLine("Результат деления " + quotient);
                 break;
-            default:
-                Console.WriteLine("Выбрана неверная операция.");
-                break;
+            }
         }
     }
 }
